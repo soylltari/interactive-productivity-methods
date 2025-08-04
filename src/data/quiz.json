@@ -1,0 +1,56 @@
+[
+  {
+    "id": "q1",
+    "question": "Do you often procrastinate on tasks?",
+    "answers": [
+      {
+        "text": "Yes, I miss deadlines and leave everything till the last minute.",
+        "tags": ["procrastination", "focus"]
+      },
+      {
+        "text": "Sometimes, but I work gradually.",
+        "tags": ["planning", "routine"]
+      },
+      {
+        "text": "No, I finish tasks on time.",
+        "tags": ["structure", "prioritizing"]
+      }
+    ]
+  },
+  {
+    "id": "q2",
+    "question": "How do you plan your day?",
+    "answers": [
+      {
+        "text": "I go with the flow, no strict plan.",
+        "tags": ["focus", "energy"]
+      },
+      {
+        "text": "I write a list of tasks and do them in order.",
+        "tags": ["planning", "prioritizing"]
+      },
+      {
+        "text": "I plan every hour of my day.",
+        "tags": ["structure", "time-management"]
+      }
+    ]
+  },
+  {
+    "id": "q3",
+    "question": "What's your biggest struggle?",
+    "answers": [
+      {
+        "text": "I don’t know what to do first.",
+        "tags": ["decision-making", "prioritizing"]
+      },
+      {
+        "text": "I know what to do, but I avoid doing it.",
+        "tags": ["procrastination", "habit-building"]
+      },
+      {
+        "text": "I get distracted too easily.",
+        "tags": ["focus", "energy"]
+      }
+    ]
+  }
+]
