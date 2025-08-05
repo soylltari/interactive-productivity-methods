@@ -6,7 +6,7 @@
   body {
     font-family: "Inter", sans-serif;
     color: #1f2937;
-    @apply min-h-screen bg-[url('./assets/bg-mobile.png')] bg-cover bg-no-repeat bg-fixed md:bg-[url('./assets/bg-desktop.png')];
+    @apply px-4 md:px-10 lg:px-20 min-h-screen bg-[url('./assets/bg-mobile.png')] bg-cover bg-no-repeat bg-fixed md:bg-[url('./assets/bg-desktop.png')];
   }
 
   h1 {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-end sticky top-0 z-50">
+    <nav className="flex justify-end sticky top-0 z-50 py-4">
       <ul className="hidden md:flex gap-12">
         <li>
           <Link to="/">Home</Link>
