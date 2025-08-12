@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center items-center text-center h-[calc(100vh-5rem)] md:h-[calc(100vh-56px)] px-10 gap-8">
+    <>
       <div className="space-y-6 max-w-2xl">
         <h1>Find your productivity method!</h1>
         <p className="text-gray-600">
@@ -19,6 +19,6 @@ export default function Home() {
       <p className="text-yellow-400 [&>a]:underline">
         or <Link to="/library">Browse methods</Link>
       </p>
-    </div>
+    </>
   );
 }

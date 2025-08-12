@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Quiz() {
   return (
-    <div className="flex flex-col justify-center items-center text-center h-[calc(100vh-5rem)] md:h-[calc(100vh-56px)] px-10 gap-8">
+    <>
       <div className="space-y-2">
         <h1>Do you often procrastinate on tasks?</h1>
         <p className="text-yellow-400">Question 1/3</p>
@@ -25,6 +25,6 @@ export default function Quiz() {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 }
