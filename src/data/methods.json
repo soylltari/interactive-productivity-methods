@@ -1,13 +1,15 @@
 [
   {
     "id": "eisenhower-matrix",
+    "icon": "/src/assets/matrix.svg",
     "name": "Eisenhower Matrix",
     "description": "A method that helps you prioritize tasks based on urgency and importance, so you focus on what really matters.",
     "howToUse": "Sort your tasks into four quadrants: urgent & important, important but not urgent, urgent but not important, and neither. Focus on the top-left, schedule the top-right, delegate the bottom-left, and discard the bottom-right.",
-    "tags": ["prioritizing", "decision-making", "time-management"]
+    "tags": ["prioritizing", "decision-making", "planning"]
   },
   {
     "id": "eat-the-frog",
+    "icon": "/src/assets/frog.svg",
     "name": "Eat the Frog",
     "description": "A technique that encourages you to tackle your most difficult or important task first thing in the day.",
     "howToUse": "Write down your tasks and pick the most important or dreaded one — your 'frog'. Complete it first before moving on to anything else.",
@@ -15,20 +17,23 @@
   },
   {
     "id": "pomodoro",
+    "icon": "/src/assets/tomato.svg",
     "name": "Pomodoro Technique",
     "description": "A time management method that breaks your work into focused intervals, traditionally 25 minutes long, separated by short breaks.",
     "howToUse": "Choose a task, set a 25-minute timer, and work with full focus. When the timer ends, take a 5-minute break. After four sessions, take a longer break.",
-    "tags": ["time-management", "focus", "energy"]
+    "tags": ["structure", "focus", "habit-building"]
   },
   {
     "id": "ivy-lee-method",
+    "icon": "/src/assets/to-do.svg",
     "name": "Ivy Lee Method",
     "description": "A simple planning technique that helps you organize and complete your most important tasks each day.",
     "howToUse": "At the end of your day, write down the six most important tasks for tomorrow. Prioritize them. The next day, focus on the first task until it’s done, then move on.",
-    "tags": ["planning", "prioritizing", "daily-focus"]
+    "tags": ["planning", "prioritizing", "routine"]
   },
   {
     "id": "time-blocking",
+    "icon": "/src/assets/calendar.svg",
     "name": "Time Blocking",
     "description": "A productivity strategy where you divide your day into blocks of time and assign specific tasks to each block.",
     "howToUse": "Create a visual calendar or grid. Assign specific tasks or task types to each time slot. Stick to your schedule as if each block is an appointment.",

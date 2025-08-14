@@ -23,7 +23,7 @@
     "answers": [
       {
         "text": "I go with the flow, no strict plan.",
-        "tags": ["focus", "energy"]
+        "tags": ["focus", "procrastination"]
       },
       {
         "text": "I write a list of tasks and do them in order.",
@@ -31,7 +31,7 @@
       },
       {
         "text": "I plan every hour of my day.",
-        "tags": ["structure", "time-management"]
+        "tags": ["structure", "routine"]
       }
     ]
   },
@@ -49,7 +49,7 @@
       },
       {
         "text": "I get distracted too easily.",
-        "tags": ["focus", "energy"]
+        "tags": ["focus", "habit-building"]
       }
     ]
   }
