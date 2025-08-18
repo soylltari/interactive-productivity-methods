@@ -16,8 +16,11 @@ export default function Home() {
       >
         Take a test
       </Link>
-      <p className="text-yellow-400 [&>a]:underline">
-        or <Link to="/library">Browse methods</Link>
+      <p className="text-blue-500">
+        or{" "}
+        <Link to="/library" className="underline hover:text-blue-600">
+          Browse methods
+        </Link>
       </p>
     </>
   );
