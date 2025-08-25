@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import quizData from "../data/quiz.json";
 import methods from "../data/methods.json";
 
@@ -71,11 +72,15 @@ export default function Quiz() {
               Click on your method below to learn more about it
             </p>
           </div>
-          <div className="cursor-pointer flex flex-col justify-center gap-2 mb-4">
+          <Link
+            to={`/library/${topMethod.id}`}
+            className="cursor-pointer flex flex-col justify-center gap-2 mb-4 md:w-1/2"
+          >
             <span className="text-3xl">👑</span>
             <img src={topMethod.icon} alt={topMethod.id} className="h-24" />
             <h2>{topMethod.name}</h2>
-          </div>
+            <p>{topMethod.description}</p>
+          </Link>
 
           <div>
             <h3 className="text-lg font-semibold mb-4 text-center">

@@ -3,6 +3,7 @@ import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 import Library from "./pages/Library";
+import MethodDetail from "./pages/MethodDetail";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="quiz" element={<Quiz />} />
         <Route path="library" element={<Library />} />
+        <Route path="library/:methodId" element={<MethodDetail />} />
       </Route>
     </Routes>
   );

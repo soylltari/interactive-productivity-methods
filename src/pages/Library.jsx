@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MethodCard from "../components/MethodCard";
 import methods from "../data/methods.json";
 
@@ -12,7 +13,9 @@ export default function Library() {
       </div>
       <div className="grid gap-10 md:grid-cols-3">
         {methods.map((method, id) => (
-          <MethodCard key={id} method={method} />
+          <Link key={id} to={`/library/${method.id}`}>
+            <MethodCard method={method} />
+          </Link>
         ))}
       </div>
     </>
