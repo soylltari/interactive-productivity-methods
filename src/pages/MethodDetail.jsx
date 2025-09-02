@@ -1,24 +1,36 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import methodsData from "../data/methods.json";
+import { useState, useEffect, lazy, Suspense } from "react";
+import methods from "../data/methods.json";
+
+const methodComponents = {
+  "eisenhower-matrix": lazy(() =>
+    import("../components/methods/EisenhowerMatrix")
+  ),
+  "eat-the-frog": lazy(() => import("../components/methods/EatTheFrog")),
+  pomodoro: lazy(() => import("../components/methods/PomodoroTechnique")),
+  "ivy-lee-method": lazy(() => import("../components/methods/IvyLeeMethod")),
+  "time-blocking": lazy(() => import("../components/methods/TimeBlocking")),
+};
 
 export default function MethodDetail() {
   const { methodId } = useParams();
   const [method, setMethod] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const foundMethod = methodsData.find((method) => method.id === methodId);
+    const foundMethod = methods.find((method) => method.id === methodId);
     setMethod(foundMethod);
-    setLoading(false);
   }, [methodId]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   if (!method) {
     return <div>Method not found</div>;
+  }
+
+  const MethodComponent = methodComponents[methodId];
+
+  console.log(MethodComponent);
+
+  if (!MethodComponent) {
+    return <div>Method component not implemented yet</div>;
   }
 
   return (
@@ -30,12 +42,15 @@ export default function MethodDetail() {
       </div>
       <div>
         <h3>Tags:</h3>
-        <ul>
+        <ul className="flex gap-4">
           {method.tags.map((tag) => (
             <li key={tag}>{tag}</li>
           ))}
         </ul>
       </div>
+      <Suspense fallback={<div>Loading method...</div>}>
+        <MethodComponent methodData={method} />
+      </Suspense>
     </div>
   );
 }
