@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect, lazy, Suspense } from "react";
 import methods from "../data/methods.json";
 
@@ -34,23 +34,34 @@ export default function MethodDetail() {
   }
 
   return (
-    <div>
+    <>
       <h1>{method.name}</h1>
+      <Suspense fallback={<div>Loading method...</div>}>
+        <MethodComponent methodData={method} />
+      </Suspense>
       <div>
         <h2>How to Use:</h2>
         <p>{method.howToUse}</p>
       </div>
-      <div>
+      <div className="flex flex-col justify-center">
         <h3>Tags:</h3>
-        <ul className="flex gap-4">
-          {method.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
+        <ul className="flex flex-wrap mt-4 gap-2">
+          {method.tags.map((tag, id) => (
+            <li
+              key={id}
+              className="capitalize text-sm bg-blue-300 rounded-full px-2"
+            >
+              {tag}
+            </li>
           ))}
         </ul>
       </div>
-      <Suspense fallback={<div>Loading method...</div>}>
-        <MethodComponent methodData={method} />
-      </Suspense>
-    </div>
+      <Link
+        to="/library"
+        className="text-blue-500 underline hover:text-blue-700"
+      >
+        Browse other methods
+      </Link>
+    </>
   );
 }
