@@ -11,7 +11,7 @@ export default function Library() {
           Click on the method to learn more about it
         </p>
       </div>
-      <div className="grid gap-10 md:grid-cols-3">
+      <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-3">
         {methods.map((method, id) => (
           <Link key={id} to={`/library/${method.id}`}>
             <MethodCard method={method} />
