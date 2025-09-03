@@ -110,9 +110,12 @@ export default function Quiz() {
           >
             Try again
           </button>
-          <p className="text-blue-500 underline hover:text-blue-700">
+          <Link
+            to="/library"
+            className="text-blue-500 underline hover:text-blue-700"
+          >
             Browse the complete library of methods
-          </p>
+          </Link>
         </>
       ) : (
         <>
