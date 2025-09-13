@@ -35,7 +35,10 @@ export default function MethodDetail() {
 
   return (
     <>
-      <h1>{method.name}</h1>
+      <div>
+        <h1>{method.name}</h1>
+        <p className="text-sm text-gray-600">{method.description}</p>
+      </div>
       <Suspense fallback={<div>Loading method...</div>}>
         <MethodComponent methodData={method} />
       </Suspense>
@@ -49,7 +52,7 @@ export default function MethodDetail() {
           {method.tags.map((tag, id) => (
             <li
               key={id}
-              className="capitalize text-sm bg-blue-300 rounded-full px-2"
+              className="capitalize text-sm bg-blue-200 text-blue-600 rounded-full px-2 py-1"
             >
               {tag}
             </li>

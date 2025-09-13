@@ -10,13 +10,13 @@ export default function MethodCard({ method }) {
           />
         </div>
         <div className="w-full h-[2px] bg-gray-200"></div>
-        <div className="px-6 py-6 text-left flex-1">
+        <div className="px-6 py-6 text-left flex-1 space-y-6">
           <h2>{method.name}</h2>
           <ul className="flex flex-wrap mt-4 gap-2">
             {method.tags.map((tag, id) => (
               <li
                 key={id}
-                className="capitalize text-sm bg-blue-300 rounded-full px-2"
+                className="capitalize text-sm bg-blue-200 text-blue-600 rounded-full px-2 py-1"
               >
                 {tag}
               </li>
