@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 export default function EatTheFrog({ methodData }) {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useLocalStorage(methodData.id, []);
   const [inputValue, setInputValue] = useState("");
   const [animate, setAnimate] = useState(null);
 
