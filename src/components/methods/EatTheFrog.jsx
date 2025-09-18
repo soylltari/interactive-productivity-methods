@@ -49,23 +49,31 @@ export default function EatTheFrog({ methodData }) {
           Note: Limit your frogs to a maximum of 2 tasks per day
         </p>
       </div>
-      <div className="flex gap-2.5 min-h-40">
-        {tasks.map((task, id) => (
-          <div
-            key={id}
-            onClick={() => handleClick(id)}
-            className={`flex flex-col flex-wrap justify-center max-w-40 ${
-              animate === id ? "animate-[bump_.5s_ease-in]" : ""
-            }`}
-          >
-            <p>{task.text}</p>
-            <img
-              src={methodData.icon}
-              alt={methodData.id}
-              className="h-40 w-40"
-            />
-          </div>
-        ))}
+      <div className="flex items-start justify-center gap-8 min-h-44">
+        {tasks && tasks.length > 0 ? (
+          tasks.map((task, id) => (
+            <div
+              key={task.id}
+              onClick={() => handleClick(id)}
+              className={`flex flex-col items-center cursor-pointer w-40 ${
+                animate === id ? "animate-[bump_.5s_ease-in]" : ""
+              }`}
+            >
+              <div className="h-12 flex items-center justify-center mb-2 px-2">
+                <p className="text-center text-sm leading-tight line-clamp-3 break-words">
+                  {task.text}
+                </p>
+              </div>
+              <img
+                src={methodData.icon}
+                alt={methodData.id}
+                className="h-40 w-40 object-contain"
+              />
+            </div>
+          ))
+        ) : (
+          <p className="text-sm text-gray-500">No frogs yet...</p>
+        )}
       </div>
     </>
   );
