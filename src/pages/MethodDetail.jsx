@@ -15,19 +15,21 @@ const methodComponents = {
 export default function MethodDetail() {
   const { methodId } = useParams();
   const [method, setMethod] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const foundMethod = methods.find((method) => method.id === methodId);
     setMethod(foundMethod);
+    setIsLoading(false);
   }, [methodId]);
+
+  if (isLoading) return <div>Loading...</div>;
 
   if (!method) {
     return <div>Method not found</div>;
   }
 
   const MethodComponent = methodComponents[methodId];
-
-  console.log(MethodComponent);
 
   if (!MethodComponent) {
     return <div>Method component not implemented yet</div>;
@@ -48,7 +50,7 @@ export default function MethodDetail() {
       </div>
       <div className="flex flex-col justify-center">
         <h3>Tags:</h3>
-        <ul className="flex flex-wrap mt-4 gap-2">
+        <ul className="flex justify-center flex-wrap mt-4 gap-2">
           {method.tags.map((tag, id) => (
             <li
               key={id}
