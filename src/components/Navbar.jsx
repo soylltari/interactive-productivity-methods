@@ -1,5 +1,5 @@
-import { IoMenu } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import burgerMenu from "/src/assets/burger-menu.svg";
 
 export default function Navbar({ onMenuClick }) {
   return (
@@ -16,7 +16,7 @@ export default function Navbar({ onMenuClick }) {
         </li>
       </ul>
       <button className="md:hidden" onClick={onMenuClick}>
-        <IoMenu size={40} />
+        <img src={burgerMenu} alt="burger-menu" className="h-10 w-10" />
       </button>
     </nav>
   );
