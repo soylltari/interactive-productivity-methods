@@ -3,8 +3,8 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import methods from "../data/methods.json";
 
 const methodComponents = {
-  "eisenhower-matrix": lazy(() =>
-    import("../components/methods/EisenhowerMatrix")
+  "eisenhower-matrix": lazy(
+    () => import("../components/methods/EisenhowerMatrix")
   ),
   "eat-the-frog": lazy(() => import("../components/methods/EatTheFrog")),
   pomodoro: lazy(() => import("../components/methods/PomodoroTechnique")),
@@ -37,14 +37,11 @@ export default function MethodDetail() {
 
   return (
     <>
-      <div>
-        <h1>{method.name}</h1>
-        <p className="text-sm text-gray-600">{method.description}</p>
-      </div>
+      <h1>{method.name}</h1>
       <Suspense fallback={<div>Loading method...</div>}>
         <MethodComponent methodData={method} />
       </Suspense>
-      <div>
+      <div className="md:w-2xl">
         <h2>How to Use:</h2>
         <p>{method.howToUse}</p>
       </div>

@@ -36,8 +36,9 @@ export default function EatTheFrog({ methodData }) {
         <input
           type="text"
           value={inputValue}
+          placeholder="Only 2 frogs a day 🐸"
           onChange={(e) => setInputValue(e.target.value)}
-          className="bg-white border-0 shadow-sm shadow-blue-100 rounded-full focus:outline-none px-5 py-2 "
+          className="bg-white border-0 shadow-sm shadow-blue-100 rounded-full focus:outline-none px-5 py-2"
         />
         <button
           onClick={addTask}
@@ -45,11 +46,8 @@ export default function EatTheFrog({ methodData }) {
         >
           Create Frog
         </button>
-        <p className="text-sm text-gray-500">
-          Note: Limit your frogs to a maximum of 2 tasks per day
-        </p>
       </div>
-      <div className="flex items-start justify-center gap-8 min-h-44">
+      <div className="flex items-center justify-center gap-8 min-h-44">
         {tasks && tasks.length > 0 ? (
           tasks.map((task, id) => (
             <div
