@@ -79,7 +79,7 @@ export default function Quiz() {
             <span className="text-3xl">👑</span>
             <img src={topMethod.icon} alt={topMethod.id} className="h-24" />
             <h2>{topMethod.name}</h2>
-            <p>{topMethod.description}</p>
+            <p className="text-gray-600">{topMethod.description}</p>
           </Link>
 
           <div>

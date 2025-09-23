@@ -43,7 +43,7 @@ export default function MethodDetail() {
       </Suspense>
       <div className="md:w-2xl">
         <h2>How to Use:</h2>
-        <p>{method.howToUse}</p>
+        <p className="text-gray-600">{method.howToUse}</p>
       </div>
       <div className="flex flex-col justify-center">
         <h3>Tags:</h3>
