@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import MethodCard from "../components/MethodCard";
-import methods from "../data/methods.json";
+import methodsData from "../data/methods.json";
+import { ProductivityMethod } from "../definitions";
+
+const methods: ProductivityMethod[] = methodsData;
 
 export default function Library() {
   return (

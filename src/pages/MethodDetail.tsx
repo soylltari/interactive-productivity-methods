@@ -1,7 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect, lazy, Suspense } from "react";
-import methods from "../data/methods.json";
+import methodsData from "../data/methods.json";
+import { ProductivityMethod } from "../definitions";
 
+const methods: ProductivityMethod[] = methodsData;
 const methodComponents = {
   "eisenhower-matrix": lazy(
     () => import("../components/methods/EisenhowerMatrix")
@@ -13,13 +15,12 @@ const methodComponents = {
 };
 
 export default function MethodDetail() {
-  const { methodId } = useParams();
-  const [method, setMethod] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const { methodId } = useParams<string>();
+  const [method, setMethod] = useState<ProductivityMethod | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const foundMethod = methods.find((method) => method.id === methodId);
-    setMethod(foundMethod);
+    setMethod(methods.find((method) => method.id === methodId) ?? null);
     setIsLoading(false);
   }, [methodId]);
 
@@ -29,7 +30,9 @@ export default function MethodDetail() {
     return <div>Method not found</div>;
   }
 
-  const MethodComponent = methodComponents[methodId];
+  const MethodComponent = methodId
+    ? methodComponents[methodId as keyof typeof methodComponents]
+    : undefined;
 
   if (!MethodComponent) {
     return <div>Method component not implemented yet</div>;
