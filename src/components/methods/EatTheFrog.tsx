@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { MethodComponentProps, Task } from "../../definitions";
 
-export default function EatTheFrog({ methodData }) {
-  const [tasks, setTasks] = useLocalStorage(methodData.id, []);
-  const [inputValue, setInputValue] = useState("");
-  const [animate, setAnimate] = useState(null);
+export default function EatTheFrog({ methodData }: MethodComponentProps) {
+  const [tasks, setTasks] = useLocalStorage<Task[]>(methodData.id, []);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [animate, setAnimate] = useState<number | null>(null);
 
   function addTask() {
     if (tasks.length === 2) return;
@@ -16,13 +17,13 @@ export default function EatTheFrog({ methodData }) {
     setInputValue("");
   }
 
-  function deleteTask(index) {
+  function deleteTask(index: number) {
     const newTasks = [...tasks];
     newTasks.splice(index, 1);
     setTasks(newTasks);
   }
 
-  function handleClick(index) {
+  function handleClick(index: number) {
     setAnimate(index);
     setTimeout(() => {
       deleteTask(index);
@@ -48,7 +49,7 @@ export default function EatTheFrog({ methodData }) {
         </button>
       </div>
       <div className="flex items-center justify-center gap-8 min-h-44">
-        {tasks && tasks.length > 0 ? (
+        {tasks.length > 0 ? (
           tasks.map((task, id) => (
             <div
               key={task.id}

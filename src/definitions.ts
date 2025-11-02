@@ -17,3 +17,12 @@ export interface QuizQuestion {
   question: string;
   answers: QuizAnswer[];
 }
+
+export interface MethodComponentProps {
+  methodData: ProductivityMethod;
+}
+
+export interface Task {
+  id: number;
+  text: string;
+}
