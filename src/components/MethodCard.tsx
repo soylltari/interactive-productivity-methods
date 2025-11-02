@@ -1,4 +1,10 @@
-export default function MethodCard({ method }) {
+import { ProductivityMethod } from "../definitions";
+
+interface MethodCardProps {
+  method: ProductivityMethod;
+}
+
+export default function MethodCard({ method }: MethodCardProps) {
   return (
     <div className="main-gradient p-[2px] rounded-3xl w-80 hover:shadow-[0px_4px_14px_0_rgba(147,197,253,.70)] transition-all">
       <div className="bg-gray-50 rounded-[1.4rem] cursor-pointer w-full min-h-86 flex flex-col">
