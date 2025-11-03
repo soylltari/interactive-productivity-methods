@@ -6,10 +6,10 @@ import { useState } from "react";
 export default function MainLayout() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Navbar onMenuClick={() => setSidebarOpen(true)} />
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <main className="flex flex-col justify-center items-center text-center min-h-[calc(100vh-72px)] md:min-h-[calc(100vh-56px)] px-10 my-4 gap-10">
+      <main className="flex-1 flex flex-col justify-center items-center text-center px-10 my-4 gap-10">
         <Outlet />
       </main>
     </div>

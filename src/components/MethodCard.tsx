@@ -1,4 +1,5 @@
 import { ProductivityMethod } from "../definitions";
+import arrowRight from "/src/assets/arrow-right.svg";
 
 interface MethodCardProps {
   method: ProductivityMethod;
@@ -6,8 +7,8 @@ interface MethodCardProps {
 
 export default function MethodCard({ method }: MethodCardProps) {
   return (
-    <div className="main-gradient p-[2px] rounded-3xl w-80 hover:shadow-[0px_4px_14px_0_rgba(147,197,253,.70)] transition-all">
-      <div className="bg-gray-50 rounded-[1.4rem] cursor-pointer w-full min-h-86 flex flex-col">
+    <div className="main-gradient p-[2px] rounded-3xl w-80 min-h-86 hover:shadow-[0px_4px_14px_0_rgba(147,197,253,.70)] transition-all">
+      <div className="bg-gray-50 rounded-[1.4rem] cursor-pointer w-full min-h-92 flex flex-col relative">
         <div className="h-48 flex items-center justify-center p-4">
           <img
             src={method.icon}
@@ -29,6 +30,11 @@ export default function MethodCard({ method }: MethodCardProps) {
             ))}
           </ul>
         </div>
+        <img
+          src={arrowRight}
+          alt="arrow-right"
+          className="h-10 w-10 absolute bottom-2 right-2"
+        />
       </div>
     </div>
   );
