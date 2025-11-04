@@ -1,6 +1,6 @@
 # Interactive Productivity Methods
 
-An interactive React.js project where users take a short test to find the productivity method that suits them best, and then practice it through interactive tools.
+An interactive React + TypeScript project where users take a short test to find the productivity method (Eat the Frog, Eisenhower Matrix, etc.) that suits them best, and then practice it through interactive tools. Designed and developed from scratch — UI/UX, logic, and components.
 
 ![Project Preview](/src/assets/screenshots/home-page.png)
 
@@ -24,6 +24,7 @@ Currently a work in progress — implemented Quiz and Eat the Frog method, with 
 ## Tech stack
 
 - [Vite](https://vitejs.dev/) + [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/) for styling
 - [React Router](https://reactrouter.com/) for navigation
 - [Vitest](https://vitest.dev/) for testing
@@ -33,7 +34,7 @@ Currently a work in progress — implemented Quiz and Eat the Frog method, with 
 All UI/UX design was created by me from scratch using [Figma](https://figma.com).  
 The project demonstrates both coding and design skills.
 
-## Instalation and tests
+## Installation and tests
 
 1. Clone the repository
 
@@ -67,10 +68,16 @@ Run the test suite:
 npm test
 ```
 
+## Deployment
+
+Deployed with Vercel. CI/CD auto-builds on push to main branch.
+
 ## What I Learned
 
+- Project Architecture & Setup — built the project from scratch: planned feature flow, created reusable UI components, organized routes and state logic, and implemented a scalable folder structure.
 - React Hooks — practiced `useState` and `useEffect`, and created a custom hook `useLocalStorage`.
 - Local Storage — learned how to persist user data in a simple web application.
+- TypeScript Integration — migrated the project from JavaScript to TypeScript, adding type safety to components, custom hooks, and state structures.
 - Responsive Design — built consistent UI using a mobile-first approach with Tailwind CSS.
 - Component Testing — wrote tests with Vitest and React Testing Library.
 
