@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { MethodComponentProps, Task } from "../../definitions";
-import { useLocalStorage } from "./hooks/useLocalStorage";
-import arrowDown from "../../assets/arrow-down.svg";
+import { MethodComponentProps, Task } from "@/definitions";
+import arrowDown from "@/assets/arrow-down.svg";
+import { useTaskManagement } from "./hooks/useTaskManagement";
+import AddTask from "../AddTask";
 
 interface MatrixTask extends Task {
   urgency: MatrixUrgency;
@@ -41,26 +41,21 @@ const quadrants = [
 ] as const;
 
 export default function EisenhowerMatrix({ methodData }: MethodComponentProps) {
-  const [tasks, setTasks] = useLocalStorage<MatrixTask[]>(methodData.id, []);
-  const [inputValue, setInputValue] = useState<string>("");
-  const [urgency, setUrgency] = useState<MatrixUrgency>(
-    "notImportantNotUrgent"
-  );
+  const {
+    tasks,
+    inputValue,
+    setInputValue,
+    urgency,
+    setUrgency,
+    addTask,
+    deleteTask,
+  } = useTaskManagement<MatrixTask>(methodData.id, {
+    initialUrgency: "notImportantNotUrgent",
+  });
 
-  function addTask() {
-    if (!inputValue.trim()) return;
-    const task = {
-      id: Date.now(),
-      text: inputValue,
-      urgency: urgency,
-    };
-    setTasks([...tasks, task]);
-    setInputValue("");
-  }
-
-  function deleteTask(index: number) {
-    setTasks(tasks.filter((t) => t.id !== index));
-  }
+  const handleAddTask = () => {
+    addTask(urgency);
+  };
 
   function groupTasksByUrgency(tasks: MatrixTask[]) {
     return tasks.reduce(
@@ -85,7 +80,7 @@ export default function EisenhowerMatrix({ methodData }: MethodComponentProps) {
         <div className="relative w-full">
           <select
             value={urgency}
-            onChange={(e) => setUrgency(e.target.value as MatrixUrgency)}
+            onChange={(e) => setUrgency(e.target.value)}
             className="bg-white border-0 shadow-sm shadow-blue-100 rounded-full focus:outline-none px-5 py-2 pr-10 appearance-none cursor-pointer"
           >
             {quadrants.map((q) => (
@@ -99,19 +94,15 @@ export default function EisenhowerMatrix({ methodData }: MethodComponentProps) {
             src={arrowDown}
           />
         </div>
-        <input
-          type="text"
-          value={inputValue}
-          placeholder="Prioritize your task"
-          onChange={(e) => setInputValue(e.target.value)}
-          className="bg-white border-0 shadow-sm shadow-blue-100 rounded-full focus:outline-none px-5 py-2"
-        />
-        <button
-          onClick={addTask}
-          className="bg-green-400 text-gray-50 rounded-full w-full p-2 cursor-pointer"
-        >
-          Add task
-        </button>
+        <div className="w-full">
+          <AddTask
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            onAdd={handleAddTask}
+            buttonText="Add Task"
+            placeholder="Prioritize your tasks"
+          />
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-4 w-full md:w-[40rem]">

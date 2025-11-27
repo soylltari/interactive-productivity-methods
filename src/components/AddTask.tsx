@@ -2,8 +2,8 @@ interface AddTaskProps {
   placeholder?: string;
   inputValue: string;
   setInputValue: (newValue: string) => void;
-  onAdd: () => void; // New prop to handle the click
-  buttonText?: string; // New prop to change button label
+  onAdd: () => void;
+  buttonText?: string;
 }
 
 export default function AddTask({
@@ -11,11 +11,8 @@ export default function AddTask({
   inputValue,
   setInputValue,
   onAdd,
-  buttonText = "Add Task", // Default text if none provided
+  buttonText = "Add Task",
 }: AddTaskProps) {
-  // We removed the internal 'useState'.
-  // Now this component is "Controlled" entirely by the parent.
-
   return (
     <div className="flex flex-col gap-4">
       <input
