@@ -8,7 +8,11 @@
     "checkJs": false,
     "noEmit": true,
     "moduleResolution": "bundler",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src"]
 }

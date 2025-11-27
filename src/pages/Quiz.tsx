@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import quiz from "../data/quiz.json";
-import methodsData from "../data/methods.json";
-import { ProductivityMethod, QuizQuestion, QuizAnswer } from "../definitions";
+import quiz from "@/data/quiz.json";
+import methodsData from "@/data/methods.json";
+import { ProductivityMethod, QuizQuestion, QuizAnswer } from "@/definitions";
 
 const methods: ProductivityMethod[] = methodsData;
 const quizData: QuizQuestion[] = quiz;

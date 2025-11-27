@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import MethodCard from "../components/MethodCard";
-import methodsData from "../data/methods.json";
-import { ProductivityMethod } from "../definitions";
+import MethodCard from "@/components/MethodCard";
+import methodsData from "@/data/methods.json";
+import { ProductivityMethod } from "@/definitions";
 
 const methods: ProductivityMethod[] = methodsData;
 

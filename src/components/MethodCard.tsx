@@ -1,4 +1,4 @@
-import { ProductivityMethod } from "../definitions";
+import { ProductivityMethod } from "@/definitions";
 import arrowRight from "/src/assets/arrow-right.svg";
 
 interface MethodCardProps {

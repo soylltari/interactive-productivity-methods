@@ -1,17 +1,17 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect, lazy, Suspense } from "react";
-import methodsData from "../data/methods.json";
-import { ProductivityMethod } from "../definitions";
+import methodsData from "@/data/methods.json";
+import { ProductivityMethod } from "@/definitions";
 
 const methods: ProductivityMethod[] = methodsData;
 const methodComponents = {
   "eisenhower-matrix": lazy(
-    () => import("../components/methods/EisenhowerMatrix")
+    () => import("@/components/methods/EisenhowerMatrix")
   ),
-  "eat-the-frog": lazy(() => import("../components/methods/EatTheFrog")),
-  pomodoro: lazy(() => import("../components/methods/PomodoroTechnique")),
-  "ivy-lee-method": lazy(() => import("../components/methods/IvyLeeMethod")),
-  "time-blocking": lazy(() => import("../components/methods/TimeBlocking")),
+  "eat-the-frog": lazy(() => import("@/components/methods/EatTheFrog")),
+  pomodoro: lazy(() => import("@/components/methods/PomodoroTechnique")),
+  "ivy-lee-method": lazy(() => import("@/components/methods/IvyLeeMethod")),
+  "time-blocking": lazy(() => import("@/components/methods/TimeBlocking")),
 };
 
 export default function MethodDetail() {
