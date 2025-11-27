@@ -107,11 +107,14 @@ export default function Quiz() {
                     : ""
                 }`}
               >
-                <div className="flex items-center">
+                <div className="flex items-center flex-grow min-w-0">
                   <img src={method.icon} alt={method.id} className="h-6 mr-2" />
-                  <p>{method.name}</p>
+                  <p className="whitespace-nowrap overflow-hidden text-ellipsis">
+                    {method.name}
+                  </p>
                 </div>
-                <span className="ml-12">{method.score}</span>
+
+                <span className="ml-8">{method.score}</span>
               </div>
             ))}
           </div>
@@ -133,7 +136,7 @@ export default function Quiz() {
         <>
           <div className="space-y-2">
             <h1>{quizData[currentQuestion].question}</h1>
-            <p className="text-yellow-400">
+            <p className="text-blue-400">
               Question {currentQuestion + 1}/{quizData.length}
             </p>
           </div>

@@ -48,7 +48,7 @@ export default function EatTheFrog({ methodData }: MethodComponentProps) {
           Create Frog
         </button>
       </div>
-      <div className="flex items-center justify-center gap-8 min-h-44">
+      <div className="flex items-center justify-center gap-8 min-h-48 md:gap-20 md:min-h-54">
         {tasks.length > 0 ? (
           tasks.map((task, id) => (
             <div
@@ -59,14 +59,14 @@ export default function EatTheFrog({ methodData }: MethodComponentProps) {
               }`}
             >
               <div className="h-12 flex items-center justify-center mb-2 px-2">
-                <p className="text-center text-sm leading-tight line-clamp-3 break-words">
+                <p className="text-center text-sm leading-tight overflow-y-auto break-words max-h-14">
                   {task.text}
                 </p>
               </div>
               <img
                 src={methodData.icon}
                 alt={methodData.id}
-                className="h-40 w-40 object-contain"
+                className="h-32 w-32 md:h-40 md:w-40 object-contain"
               />
             </div>
           ))
