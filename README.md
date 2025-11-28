@@ -14,8 +14,8 @@ Currently a work in progress — implemented Quiz and Eat the Frog method, with 
 - Detailed results with scores for each method
 - Interactive productivity tools:
   - ✅ Eat the Frog (choose up to 2 critical tasks per day)
-  - Eisenhower Matrix (coming soon)
-  - Pomodoro Timer (coming soon)
+  - ✅ Eisenhower Matrix (prioritize tasks)
+  - ✅ Pomodoro Timer (break work into intervals)
   - Ivy Lee Method (coming soon)
   - Time Blocking (coming soon)
 - LocalStorage support: tasks stay saved between sessions
@@ -84,8 +84,8 @@ Deployed with Vercel. CI/CD auto-builds on push to main branch.
 ## Future Improvements
 
 - [ ] Add remaining productivity tools:
-  - [ ] Eisenhower Matrix
-  - [ ] Pomodoro Timer
+  - [x] Eisenhower Matrix
+  - [x] Pomodoro Timer
   - [ ] Ivy Lee Method
   - [ ] Time Blocking
 - [ ] Add more productivity methods (Getting Things Done, Kanban, etc.)
