@@ -19,6 +19,10 @@
   p {
     @apply text-base md:text-lg leading-relaxed;
   }
+
+  button {
+    @apply cursor-pointer;
+  }
 }
 
 @utility main-gradient {

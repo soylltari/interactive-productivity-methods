@@ -24,7 +24,7 @@ export default function AddTask({
       />
       <button
         onClick={onAdd}
-        className="bg-green-400 text-gray-50 rounded-full p-2 hover:bg-green-500 transition-colors"
+        className="bg-green-400 text-gray-50 rounded-full p-2 hover:bg-green-500 transition-colors shadow-sm"
       >
         {buttonText}
       </button>
