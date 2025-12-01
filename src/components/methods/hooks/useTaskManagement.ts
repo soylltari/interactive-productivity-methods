@@ -33,10 +33,18 @@ export function useTaskManagement<T extends Task>(
 
     const taskText = inputValue.trim() || defaultText || "";
 
+    const maxOrder = tasks.reduce((max, task) => {
+      const order = task.order || 0;
+      return order > max ? order : max;
+    }, 0);
+
+    const nextOrder = maxOrder + 1;
+
     const newTask = {
       id: Date.now(),
       text: taskText,
       urgency: customUrgency || urgency,
+      order: nextOrder,
     } as unknown as T;
 
     setTasks([...tasks, newTask]);

@@ -18,25 +18,25 @@ const quadrants = [
     title: "Important & Urgent",
     key: "importantUrgent",
     colorClass: "bg-red-100 border-red-400",
-    headerClass: "bg-red-200 border-red-400",
+    headerClass: "text-red-800 bg-red-200 border-red-400",
   },
   {
     title: "Important & Not Urgent",
     key: "importantNotUrgent",
     colorClass: "bg-green-100 border-green-400",
-    headerClass: "bg-green-200 border-green-400",
+    headerClass: "text-green-800 bg-green-200 border-green-400",
   },
   {
     title: "Urgent & Not Important",
     key: "notImportantUrgent",
     colorClass: "bg-yellow-100 border-yellow-400",
-    headerClass: "bg-yellow-200 border-yellow-400",
+    headerClass: "text-yellow-800 bg-yellow-200 border-yellow-400",
   },
   {
     title: "Not Important & Not Urgent",
     key: "notImportantNotUrgent",
     colorClass: "bg-gray-100 border-gray-400",
-    headerClass: "bg-gray-200 border-gray-400",
+    headerClass: "text-gray-800 bg-gray-200 border-gray-400",
   },
 ] as const;
 

@@ -25,4 +25,5 @@ export interface MethodComponentProps {
 export interface Task {
   id: number;
   text: string;
+  order?: number;
 }
