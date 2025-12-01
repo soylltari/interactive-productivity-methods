@@ -6,18 +6,16 @@ An interactive React + TypeScript project where users take a short test to find 
 
 Live Demo: [Vercel](https://interactive-productivity-methods.vercel.app/)
 
-Currently a work in progress — implemented Quiz and Eat the Frog method, with more methods coming later.
-
 ## Features
 
 - Personality-like test with a point-based system that suggests the most suitable productivity method
 - Detailed results with scores for each method
 - Interactive productivity tools:
-  - ✅ Eat the Frog (choose up to 2 critical tasks per day)
-  - ✅ Eisenhower Matrix (prioritize tasks)
-  - ✅ Pomodoro Timer (break work into intervals)
-  - Ivy Lee Method (coming soon)
-  - Time Blocking (coming soon)
+  - ✅ Eat the Frog (enforces a strict limit of 2 tasks and uses default text logic via the reusable task hook)
+  - ✅ Eisenhower Matrix (tasks are categorized into 4 quadrants, with persistence and dynamic urgency assignment)
+  - ✅ Pomodoro Timer Pomodoro Timer (features a custom CSS visual dial that rotates to represent remaining time)
+  - ✅ Ivy Lee Method (enforces a strict limit of 6 tasks and uses a non-shifting, auto-incrementing order ID for permanent prioritization)
+  - ✅ Time Blocking (interactive timeline that uses calculated minute-to-pixel positioning and prevents time slot overlaps with validation logic)
 - LocalStorage support: tasks stay saved between sessions
 - Responsive UI (mobile + desktop)
 
@@ -75,19 +73,21 @@ Deployed with Vercel. CI/CD auto-builds on push to main branch.
 ## What I Learned
 
 - Project Architecture & Setup — built the project from scratch: planned feature flow, created reusable UI components, organized routes and state logic, and implemented a scalable folder structure.
-- React Hooks — practiced `useState` and `useEffect`, and created a custom hook `useLocalStorage`.
+- React Hooks — practiced `useState` and `useEffect`, and created a custom hook `useLocalStorage` and the reusable `useTaskManagement`.
+- Advanced State Management — designed and implemented a generic custom hook (`useTaskManagement`) to standardize core logic across five different productivity methods, handling varied business rules (max limits, default values, urgency).
 - Local Storage — learned how to persist user data in a simple web application.
 - TypeScript Integration — migrated the project from JavaScript to TypeScript, adding type safety to components, custom hooks, and state structures.
 - Responsive Design — built consistent UI using a mobile-first approach with Tailwind CSS.
+- CSS Geometry & Animations — used pure CSS techniques (translateX/rotate and transform-origin with specific coordinates) to create responsive timeline and dynamic dial visuals.
 - Component Testing — wrote tests with Vitest and React Testing Library.
 
 ## Future Improvements
 
-- [ ] Add remaining productivity tools:
+- [x] Add remaining productivity tools:
   - [x] Eisenhower Matrix
   - [x] Pomodoro Timer
-  - [ ] Ivy Lee Method
-  - [ ] Time Blocking
+  - [x] Ivy Lee Method
+  - [x] Time Blocking
 - [ ] Add more productivity methods (Getting Things Done, Kanban, etc.)
 - [ ] Add dark mode
 - [ ] Improve UI/UX design
