@@ -1,31 +1,32 @@
 # Interactive Productivity Methods
 
-An interactive React + TypeScript project where users take a short test to find the productivity method (Eat the Frog, Eisenhower Matrix, etc.) that suits them best, and then practice it through interactive tools. Designed and developed from scratch — UI/UX, logic, and components.
+An interactive Next.js project where users take a short test to find the productivity method (Eat the Frog, Eisenhower Matrix, etc.) that suits them best, and then practice it through interactive tools. Designed and developed from scratch — UI/UX, logic, and components.
 
-![Project Preview](/src/assets/screenshots/home-page.png)
+![Project Preview](/public/screenshots/home-page.png)
 
 Live Demo: [Vercel](https://interactive-productivity-methods.vercel.app/)
 
 ## Features
 
 - Personality-like test with a point-based system that suggests the most suitable productivity method
-- Detailed results with scores for each method
+- Dedicated pages for each productivity method generated statically or on-demand.
 - Interactive productivity tools:
   - ✅ Eat the Frog (enforces a strict limit of 2 tasks and uses default text logic via the reusable task hook)
   - ✅ Eisenhower Matrix (tasks are categorized into 4 quadrants, with persistence and dynamic urgency assignment)
   - ✅ Pomodoro Timer Pomodoro Timer (features a custom CSS visual dial that rotates to represent remaining time)
   - ✅ Ivy Lee Method (enforces a strict limit of 6 tasks and uses a non-shifting, auto-incrementing order ID for permanent prioritization)
   - ✅ Time Blocking (interactive timeline that uses calculated minute-to-pixel positioning and prevents time slot overlaps with validation logic)
+- Results are URL-based (?tags=...), allowing users to share their specific test outcomes easily.
 - LocalStorage support: tasks stay saved between sessions
 - Responsive UI (mobile + desktop)
 
 ## Tech stack
 
-- [Vite](https://vitejs.dev/) + [React](https://react.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/) for styling
-- [React Router](https://reactrouter.com/) for navigation
-- [Vitest](https://vitest.dev/) for testing
+- [Next.js](https://nextjs.org/) -Framework & Routing
+- [React](https://react.dev/) - UI Library
+- [TypeScript](https://www.typescriptlang.org/) - Type Safety
+- [Tailwind CSS](https://tailwindcss.com/)- Styling
+- [Vitest](https://vitest.dev/) - Testing
 
 ## Design
 
@@ -58,7 +59,7 @@ npm install
 npm run dev
 ```
 
-5. Open [http://localhost:5173](http://localhost:5173) in your browser
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 Run the test suite:
 
@@ -73,21 +74,16 @@ Deployed with Vercel. CI/CD auto-builds on push to main branch.
 ## What I Learned
 
 - Project Architecture & Setup — built the project from scratch: planned feature flow, created reusable UI components, organized routes and state logic, and implemented a scalable folder structure.
+- App Router & Server Components — Migrated from Vite to Next.js App Router, applying best practices.
 - React Hooks — practiced `useState` and `useEffect`, and created a custom hook `useLocalStorage` and the reusable `useTaskManagement`.
-- Advanced State Management — designed and implemented a generic custom hook (`useTaskManagement`) to standardize core logic across five different productivity methods, handling varied business rules (max limits, default values, urgency).
+- Advanced State Management — designed and implemented a generic custom hook (`useTaskManagement`) to standardize core logic across five different productivity methods, handling varied business rules (max limits, default values, urgency). Replaced internal React state with URL Query Parameters (useSearchParams) for the results page, making user results shareable and persistent across reloads.
 - Local Storage — learned how to persist user data in a simple web application.
-- TypeScript Integration — migrated the project from JavaScript to TypeScript, adding type safety to components, custom hooks, and state structures.
 - Responsive Design — built consistent UI using a mobile-first approach with Tailwind CSS.
 - CSS Geometry & Animations — used pure CSS techniques (translateX/rotate and transform-origin with specific coordinates) to create responsive timeline and dynamic dial visuals.
 - Component Testing — wrote tests with Vitest and React Testing Library.
 
 ## Future Improvements
 
-- [x] Add remaining productivity tools:
-  - [x] Eisenhower Matrix
-  - [x] Pomodoro Timer
-  - [x] Ivy Lee Method
-  - [x] Time Blocking
 - [ ] Add more productivity methods (Getting Things Done, Kanban, etc.)
 - [ ] Add dark mode
 - [ ] Improve UI/UX design
@@ -96,10 +92,10 @@ Deployed with Vercel. CI/CD auto-builds on push to main branch.
 
 #### Desktop
 
-![Library page](/src/assets/screenshots/library-page.png)
+![Library page](/public/screenshots/library-page.png)
 
 #### Mobile
 
-| Eat the Frog                                                            | Result Page                                                              |
-| ----------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| <img src="./src/assets/screenshots/eat-the-frog-page.png" width="200"/> | <img src="./src/assets/screenshots/result-page-mobile.png" width="200"/> |
+| Eat the Frog                                                       | Result Page                                                         |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| <img src="/public/screenshots/eat-the-frog-page.png" width="200"/> | <img src="/public/screenshots/result-page-mobile.png" width="200"/> |
