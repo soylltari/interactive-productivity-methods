@@ -10,10 +10,7 @@ export default function Home() {
           here on the site.
         </p>
       </div>
-      <Link
-        href="/quiz"
-        className="main-gradient px-12 py-4 rounded-full text-gray-50 text-lg transition-transform hover:scale-105 shadow-[0px_4px_24px_0_rgba(147,197,253,.70)] animate-[pulse-shadow_2s_ease-in-out_infinite]"
-      >
+      <Link href="/quiz" className="btn-primary">
         Take a test
       </Link>
       <p className="text-blue-500">

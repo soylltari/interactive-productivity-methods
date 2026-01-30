@@ -35,26 +35,28 @@ export default function EatTheFrog({ methodData }: MethodComponentProps) {
       <div className="flex items-center justify-center gap-8 min-h-48 md:gap-20 md:min-h-54">
         {tasks.length > 0 ? (
           tasks.map((task, index) => (
-            <div
+            <button
               key={task.id}
               onClick={() => handleClick(task.id, index)}
               className={`flex flex-col items-center cursor-pointer w-40 ${
                 animate === index ? "animate-[bump_.5s_ease-in]" : ""
               }`}
+              aria-label={`Delete task: ${task.text}`}
             >
-              <div className="h-12 flex items-center justify-center mb-2 px-2">
-                <p className="text-center text-sm leading-tight overflow-y-auto wrap-break-words max-h-14">
+              <span className="h-12 flex items-center justify-center mb-2 px-2">
+                <span className="text-center text-sm leading-tight overflow-y-auto wrap-break-words max-h-14">
                   {task.text}
-                </p>
-              </div>
+                </span>
+              </span>
               <Image
                 src={methodData.icon}
-                alt={methodData.id}
+                alt=""
                 height={128}
                 width={128}
                 className="md:h-40 md:w-40 object-contain"
+                aria-hidden="true"
               />
-            </div>
+            </button>
           ))
         ) : (
           <p className="text-sm text-gray-500">No frogs yet...</p>

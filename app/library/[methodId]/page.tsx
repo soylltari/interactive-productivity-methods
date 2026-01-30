@@ -2,7 +2,7 @@ import Link from "next/link";
 import methodsData from "@/app/data/methods.json";
 import { ProductivityMethod } from "@/app/definitions/definitions";
 import { notFound } from "next/navigation";
-import MethodRenderer from "@/app/components/methods/MethodsRenderer";
+import MethodRenderer from "@/app/components/MethodsRenderer";
 
 interface MethodDetailProps {
   params: Promise<{ methodId: string }>;

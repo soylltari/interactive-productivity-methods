@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { MethodComponentProps } from "@/app/definitions/definitions";
 import { useTaskManagement } from "../../hooks/useTaskManagement";
 import AddTask from "../AddTask";
@@ -26,19 +26,23 @@ export default function IvyLeeMethod({ methodData }: MethodComponentProps) {
                   ? "text-blue-800 bg-blue-200"
                   : "text-yellow-800 bg-yellow-200";
             return (
-              <div key={task.id} className="flex items-center my-6">
-                <p
-                  onClick={() => deleteTask(task.id)}
-                  className={`flex justify-center items-center w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 font-bold cursor-pointer transition-all hover:text-gray-800 hover:bg-gray-400  ${colorClass}`}
+              <button
+                key={task.id}
+                onClick={() => deleteTask(task.id)}
+                className="group flex items-center my-6"
+                aria-label={`Delete task: ${task.text}, order: ${task.order}`}
+              >
+                <span
+                  className={`flex justify-center items-center size-10 md:w-12 md:h-12 rounded-full mr-3 font-bold cursor-pointer transition-all group-hover:text-gray-800 group-hover:bg-gray-400 ${colorClass}`}
                 >
                   {task.order}
-                </p>
-                <p
-                  className={`w-60 max-h-48 md:w-lg overflow-y-auto px-4 py-2 rounded-2xl ${colorClass}`}
+                </span>
+                <span
+                  className={`w-60 max-h-48 md:w-lg overflow-y-auto px-4 py-2 rounded-2xl group-hover:text-gray-800 group-hover:bg-gray-400 group-hover:line-through ${colorClass}`}
                 >
                   {task.text}
-                </p>
-              </div>
+                </span>
+              </button>
             );
           })}
       </div>

@@ -75,11 +75,19 @@ export default function TimeBlocking({ methodData }: MethodComponentProps) {
 
   return (
     <div className="flex flex-col md:flex-row gap-6 w-full h-[calc(100vh-200px)]">
-      <div className="w-full md:w-1/3 flex flex-col gap-4 p-4 bg-white rounded-2xl shadow-sm shadow-blue-100 h-fit">
+      <div
+        className="w-full md:w-1/3 flex flex-col gap-4 p-4 bg-white rounded-2xl shadow-sm shadow-blue-100 h-fit"
+        role="form"
+        aria-label="Add new time block"
+      >
         <h3 className="font-bold text-lg text-gray-700">New Time Block</h3>
 
         {/* Inputs */}
+        <label htmlFor="task-name" className="sr-only">
+          Task Name
+        </label>
         <input
+          id="task-name"
           type="text"
           placeholder="Task Name (e.g. Deep Work)"
           value={name}
@@ -88,8 +96,11 @@ export default function TimeBlocking({ methodData }: MethodComponentProps) {
         />
         <div className="flex gap-2">
           <div className="flex-1">
-            <label className="text-xs text-gray-500 ml-1">Start</label>
+            <label htmlFor="start-time" className="text-xs text-gray-500 ml-1">
+              Start Time
+            </label>
             <input
+              id="start-time"
               type="time"
               value={start}
               onChange={(e) => setStart(e.target.value)}
@@ -97,8 +108,11 @@ export default function TimeBlocking({ methodData }: MethodComponentProps) {
             />
           </div>
           <div className="flex-1">
-            <label className="text-xs text-gray-500 ml-1">End</label>
+            <label htmlFor="end-time" className="text-xs text-gray-500 ml-1">
+              End Time
+            </label>
             <input
+              id="end-time"
               type="time"
               value={end}
               onChange={(e) => setEnd(e.target.value)}
@@ -109,16 +123,24 @@ export default function TimeBlocking({ methodData }: MethodComponentProps) {
 
         {/* Color selection */}
         <div>
-          <label className="text-xs text-gray-500 ml-1 block mb-2">Color</label>
-          <div className="flex gap-2">
+          <label
+            htmlFor="color-buttons"
+            className="text-xs text-center w-full text-gray-500 ml-1 block mb-2"
+          >
+            Color
+          </label>
+          <div id="color-buttons" className="flex gap-2">
             {COLORS.map((c) => (
               <button
                 key={c.value}
+                type="button"
                 onClick={() => setSelectedColor(c.value)}
-                className={`w-8 h-8 rounded-full border-2 ${
+                aria-label={`Select ${c.label} color`}
+                aria-pressed={selectedColor === c.value}
+                className={`size-8 rounded-full border-2 transition-transform ${
                   selectedColor === c.value
                     ? "border-blue-900 scale-110"
-                    : "border-transparent"
+                    : "border-transparent hover:scale-105"
                 } ${c.value.split(" ")[0]}`}
               />
             ))}
@@ -134,9 +156,13 @@ export default function TimeBlocking({ methodData }: MethodComponentProps) {
       </div>
 
       {/* Timeline */}
-      <div className="w-full md:w-2/3 bg-white rounded-2xl shadow-sm shadow-blue-100 overflow-y-auto relative border border-gray-100 scrollbar-thin">
+      <div
+        className="w-full md:w-2/3 bg-white rounded-2xl shadow-sm shadow-blue-100 overflow-y-auto relative border border-gray-100 scrollbar-thin"
+        tabIndex={0}
+        aria-label="Timeline view of tasks"
+      >
         {/* Hours grid */}
-        <div className="absolute top-0 left-0 w-full">
+        <div className="absolute top-0 left-0 w-full" aria-hidden="true">
           {hours.map((hour) => (
             <div
               key={hour}
@@ -162,9 +188,10 @@ export default function TimeBlocking({ methodData }: MethodComponentProps) {
           if (offsetMinutes < 0) return null;
 
           return (
-            <div
+            <button
               key={task.id}
               onClick={() => deleteTask(task.id)}
+              aria-label={`Delete task: ${task.text}, from ${task.startTime} to ${task.endTime}`}
               className={`absolute left-16 right-4 rounded-md border-l-4 p-2 text-xs md:text-sm cursor-pointer hover:opacity-90 hover:line-through transition-opacity shadow-sm overflow-hidden ${task.color}`}
               style={{
                 top: `${offsetMinutes * PIXELS_PER_MINUTE}px`,
@@ -172,11 +199,11 @@ export default function TimeBlocking({ methodData }: MethodComponentProps) {
                 zIndex: 10,
               }}
             >
-              <div className="font-bold">{task.text}</div>
-              <div className="opacity-75 text-[10px]">
+              <span className="font-bold pointer-events-none">{task.text}</span>
+              <span className="opacity-75 text-[10px] pointer-events-none">
                 {task.startTime} - {task.endTime}
-              </div>
-            </div>
+              </span>
+            </button>
           );
         })}
 

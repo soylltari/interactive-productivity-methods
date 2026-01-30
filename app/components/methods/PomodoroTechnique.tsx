@@ -1,7 +1,7 @@
 "use client";
 import { MethodComponentProps } from "@/app/definitions/definitions";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const INITIAL_TIME = 1500; // 25 minutes
 const FIVE_MINUTES = 300;
@@ -20,24 +20,27 @@ export default function PomodoroTechnique({
   const [isRunning, setIsRunning] = useState(false);
   const [showHint, setShowHint] = useState(true);
 
-  useEffect(() => {
-    let interval: number | undefined;
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  useEffect(() => {
     if (isRunning && time > 0) {
-      interval = setInterval(() => {
-        setTime((prevSeconds) => prevSeconds - 1);
-      }, 1000) as unknown as number;
+      intervalRef.current = setInterval(() => {
+        setTime((prevSeconds) => {
+          if (prevSeconds <= 1) {
+            setIsRunning(false);
+            if (intervalRef.current) clearInterval(intervalRef.current);
+            console.log("Countdown finished!");
+            return 0;
+          }
+          return prevSeconds - 1;
+        });
+      }, 1000);
     }
 
-    return () => clearInterval(interval);
-  }, [isRunning, time]);
-
-  useEffect(() => {
-    if (time === 0 && isRunning) {
-      setIsRunning(false);
-      console.log("Countdown finished!");
-    }
-  }, [time, isRunning]);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isRunning]);
 
   useEffect(() => {
     // Runs when the user tries to leave and timer is running
@@ -78,12 +81,14 @@ export default function PomodoroTechnique({
 
   return (
     <>
-      <div
+      <button
         onClick={() => {
           setIsRunning((prev) => !prev);
           setShowHint(false);
         }}
-        className="relative w-80 h-80 md:w-96 md:h-96 cursor-pointer select-none flex justify-center"
+        aria-label={isRunning ? "Pause Timer" : "Start Timer"}
+        aria-live="polite"
+        className="relative size-80 md:w-96 md:h-96 cursor-pointer select-none flex justify-center"
       >
         {showHint && (
           <p className="text-sm text-gray-500">
@@ -93,16 +98,17 @@ export default function PomodoroTechnique({
         {/* Tomato */}
         <Image
           src={methodData.icon}
-          alt={methodData.name}
+          alt=""
+          aria-hidden="true"
           fill
-          className="absolute inset-0 w-full h-full object-contain pointer-events-none z-0"
+          className="absolute inset-0 size-full object-contain pointer-events-none z-0"
         />
 
         {/* Wheel container */}
         <div className="absolute top-[55%] w-[85%] h-[45%] overflow-hidden z-10">
           {/* Wheel containing the ticks */}
           <div
-            className="absolute top-[10%] left-1/2 w-full h-full"
+            className="absolute top-[10%] left-1/2 size-full"
             style={{
               // transformOrigin: "50% -600px" pushes the pivot point, creating a gentle curve
               transformOrigin: "50% -600px",
@@ -148,14 +154,14 @@ export default function PomodoroTechnique({
 
         {/* White triangle pointer */}
         <div className="absolute top-[52%] left-1/2 -translate-x-1/2 z-20">
-          <div className="w-0 h-0 border-l-10 border-l-transparent border-r-10 border-r-transparent border-t-16 border-t-white drop-shadow-md"></div>
+          <div className="size-0 border-l-10 border-l-transparent border-r-10 border-r-transparent border-t-16 border-t-white drop-shadow-md"></div>
         </div>
 
         {/* Digital Overlay */}
         <div className="absolute bottom-[15%] text-white/80 font-mono text-sm">
           {formatTime(time)}
         </div>
-      </div>
+      </button>
 
       {/* CONTROLS */}
       <div className="flex gap-4">
@@ -164,7 +170,8 @@ export default function PomodoroTechnique({
             e.stopPropagation();
             handleControls(TimerActions.SUBTRACT_TIME);
           }}
-          className="w-12 h-12 rounded-full bg-white shadow-sm shadow-blue-100 hover:bg-red-50 text-2xl font-bold text-red-500 transition-colors"
+          aria-label="Subtract 5 minutes"
+          className="size-12 rounded-full bg-white shadow-sm shadow-blue-100 hover:bg-red-50 text-2xl font-bold text-red-500 transition-colors"
         >
           -
         </button>
@@ -173,6 +180,7 @@ export default function PomodoroTechnique({
             e.stopPropagation();
             handleControls(TimerActions.RESET);
           }}
+          aria-label="Reset Timer to 25 minutes"
           className="px-6 py-2 rounded-full bg-red-100 hover:bg-red-200 text-red-800 font-bold transition-colors shadow-sm"
         >
           Reset
@@ -182,7 +190,8 @@ export default function PomodoroTechnique({
             e.stopPropagation();
             handleControls(TimerActions.ADD_TIME);
           }}
-          className="w-12 h-12 rounded-full bg-white shadow-sm shadow-blue-100 hover:bg-green-50 text-2xl font-bold text-green-600 transition-colors"
+          aria-label="Add 5 minutes"
+          className="size-12 rounded-full bg-white shadow-sm shadow-blue-100 hover:bg-green-50 text-2xl font-bold text-green-600 transition-colors"
         >
           +
         </button>

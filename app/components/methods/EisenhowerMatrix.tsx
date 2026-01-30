@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { MethodComponentProps, Task } from "@/app/definitions/definitions";
 import { useTaskManagement } from "../../hooks/useTaskManagement";
 import AddTask from "../AddTask";
@@ -79,7 +79,11 @@ export default function EisenhowerMatrix({ methodData }: MethodComponentProps) {
     <>
       <div className="flex flex-col items-center gap-4 w-fit">
         <div className="relative w-full">
+          <label htmlFor="urgency-select" className="sr-only">
+            Select Task Urgency
+          </label>
           <select
+            id="urgency-select"
             value={urgency}
             onChange={(e) => setUrgency(e.target.value)}
             className="bg-white border-0 shadow-sm shadow-blue-100 rounded-full focus:outline-none px-5 py-2 pr-10 appearance-none cursor-pointer"
@@ -92,10 +96,11 @@ export default function EisenhowerMatrix({ methodData }: MethodComponentProps) {
           </select>
           <Image
             src="/assets/arrow-down.svg"
-            alt="Arrow down"
+            alt=""
             width={10}
             height={10}
             className="pointer-events-none absolute inset-y-0 right-0 flex items-center pt-2 pr-2"
+            aria-hidden="true"
           />
         </div>
         <div className="w-full">
@@ -111,27 +116,31 @@ export default function EisenhowerMatrix({ methodData }: MethodComponentProps) {
 
       <div className="grid md:grid-cols-2 gap-4 w-full md:w-160">
         {quadrants.map((q) => (
-          <div
+          <section
             key={q.key}
+            aria-labelledby={`heading-${q.key}`}
             className={`border-2 rounded-lg ${q.colorClass} h-64 overflow-y-auto`}
           >
             <div
               className={`p-3 font-bold text-center border-b-2 ${q.headerClass}`}
             >
-              <h3 className="text-lg m-0">{q.title}</h3>
+              <h3 id={`heading-${q.key}`} className="text-lg m-0">
+                {q.title}
+              </h3>
             </div>
             <div className="p-3">
               {grouped[q.key].map((task) => (
-                <p
+                <button
                   key={task.id}
                   onClick={() => deleteTask(task.id)}
-                  className="cursor-pointer hover:line-through text-sm my-1"
+                  aria-label={`Delete task: ${task.text}`}
+                  className="w-full text-left cursor-pointer hover:line-through text-sm my-1 py-1 px-2"
                 >
                   • {task.text}
-                </p>
+                </button>
               ))}
             </div>
-          </div>
+          </section>
         ))}
       </div>
     </>

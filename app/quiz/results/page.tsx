@@ -124,10 +124,7 @@ function ResultsContent() {
         ))}
       </div>
 
-      <Link
-        href="/"
-        className="cursor-pointer main-gradient mt-6 px-12 py-4 rounded-full text-gray-50 text-lg transition-transform hover:scale-105 shadow-[0px_4px_24px_0_rgba(147,197,253,.70)] inline-block text-center"
-      >
+      <Link href="/" className="btn-primary">
         Try again
       </Link>
 

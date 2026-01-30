@@ -10,9 +10,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   return (
     <>
       <nav
-        className={`md:hidden fixed top-0 right-0 z-50 h-screen w-1/2 px-4 py-4 bg-linear-to-b from-blue-300 to-blue-400 backdrop-blur-sm shadow-xl transform transition-transform duration-300 ease-in-out ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`sidebar ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+        aria-label="Mobile Navigation"
+        aria-hidden={!isOpen}
       >
         <ul className="flex flex-col gap-6 mt-8 font-bold text-xl text-gray-50 [&>li]:py-2 [&>li]:px-2">
           <li>

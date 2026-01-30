@@ -7,7 +7,10 @@ interface NavbarProps {
 
 export default function Navbar({ onMenuClick }: NavbarProps) {
   return (
-    <nav className="flex justify-end sticky top-0 z-50 py-4">
+    <nav
+      className="flex justify-end sticky top-0 z-50 py-4"
+      aria-label="Main Navigation"
+    >
       <ul className="hidden md:flex gap-12 [&>li]:hover:text-blue-500 [&>li]:transition-colors">
         <li>
           <Link href="/">Home</Link>
@@ -19,12 +22,17 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
           <Link href="/quiz">Quiz</Link>
         </li>
       </ul>
-      <button className="md:hidden" onClick={onMenuClick}>
+      <button
+        className="md:hidden"
+        onClick={onMenuClick}
+        aria-label="Open sidebar"
+      >
         <Image
           src="/assets/burger-menu.svg"
-          alt="Open sidebar"
+          alt=""
           width={35}
           height={35}
+          aria-hidden="true"
         />
       </button>
     </nav>
