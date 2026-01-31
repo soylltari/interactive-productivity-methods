@@ -1,18 +1,14 @@
+"use client";
+import Home from "@/app/components/Home";
+import { useFavoritesStore } from "./store/useFavoritesStore";
+import FavoriteMethodsSection from "./components/FavoriteMethodsSection";
 import Link from "next/link";
 
-export default function Home() {
+export default function MainPage() {
+  const favorites = useFavoritesStore((state) => state.favorites);
   return (
     <>
-      <div className="space-y-6 max-w-2xl">
-        <h1>Find your productivity method!</h1>
-        <p className="text-gray-600">
-          Find the productivity methods that fit you best and try them right
-          here on the site.
-        </p>
-      </div>
-      <Link href="/quiz" className="btn-primary">
-        Take a test
-      </Link>
+      {favorites.length > 0 ? <FavoriteMethodsSection /> : <Home />}
       <p className="text-blue-500">
         or{" "}
         <Link href="/library" className="underline hover:text-blue-600">
