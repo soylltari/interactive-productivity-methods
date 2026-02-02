@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import MainLayout from "./components/MainLayout";
+import MainLayout from "./components/layout/MainLayout";
 
 export const metadata: Metadata = {
   title: "Interactive Productivity Methods",

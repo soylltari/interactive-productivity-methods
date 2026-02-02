@@ -1,18 +1,25 @@
+"use client";
+import Home from "@/app/components/features/Home";
+import { useFavoritesStore } from "./store/useFavoritesStore";
+import FavoriteMethodsSection from "./components/features/favorite/FavoriteMethodsSection";
 import Link from "next/link";
+import RecentlyViewed from "./components/features/history/RecentlyViewed";
+import { useHistoryStore } from "./store/useHistoryStore";
 
-export default function Home() {
+export default function MainPage() {
+  const favorites = useFavoritesStore((state) => state.favorites);
+  const history = useHistoryStore((state) => state.history);
+
   return (
     <>
-      <div className="space-y-6 max-w-2xl">
-        <h1>Find your productivity method!</h1>
-        <p className="text-gray-600">
-          Find the productivity methods that fit you best and try them right
-          here on the site.
-        </p>
-      </div>
-      <Link href="/quiz" className="btn-primary">
-        Take a test
-      </Link>
+      {favorites.length === 0 && history.length === 0 ? (
+        <Home />
+      ) : (
+        <>
+          {favorites.length > 0 && <FavoriteMethodsSection />}
+          {history.length > 0 && <RecentlyViewed />}
+        </>
+      )}
       <p className="text-blue-500">
         or{" "}
         <Link href="/library" className="underline hover:text-blue-600">

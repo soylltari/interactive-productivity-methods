@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { MethodComponentProps } from "@/app/definitions/definitions";
 import { useTaskManagement } from "../../hooks/useTaskManagement";
-import AddTask from "../AddTask";
+import AddTask from "../ui/AddTask";
 import Image from "next/image";
 
 export default function EatTheFrog({ methodData }: MethodComponentProps) {

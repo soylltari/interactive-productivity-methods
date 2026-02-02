@@ -1,5 +1,4 @@
-import Link from "next/link";
-import MethodCard from "@/components/MethodCard";
+import MethodCard from "@/components/ui/MethodCard";
 import methodsData from "@/app/data/methods.json";
 import { ProductivityMethod } from "@/app/definitions/definitions";
 
@@ -15,10 +14,8 @@ export default function Library() {
         </p>
       </div>
       <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-3">
-        {methods.map((method, id) => (
-          <Link key={id} href={`/library/${method.id}`}>
-            <MethodCard method={method} />
-          </Link>
+        {methods.map((method) => (
+          <MethodCard key={method.id} method={method} />
         ))}
       </div>
     </>
