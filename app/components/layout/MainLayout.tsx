@@ -1,6 +1,6 @@
 "use client";
-import Navbar from "@/components/Navbar";
-import Sidebar from "@/components/Sidebar";
+import Navbar from "@/app/components/layout/Navbar";
+import Sidebar from "@/app/components/layout/Sidebar";
 import React, { useState } from "react";
 
 export default function MainLayout({

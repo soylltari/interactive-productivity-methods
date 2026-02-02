@@ -1,7 +1,7 @@
 "use client";
 import { MethodComponentProps } from "@/app/definitions/definitions";
 import { useTaskManagement } from "../../hooks/useTaskManagement";
-import AddTask from "../AddTask";
+import AddTask from "../ui/AddTask";
 
 export default function IvyLeeMethod({ methodData }: MethodComponentProps) {
   const { tasks, inputValue, setInputValue, addTask, deleteTask } =

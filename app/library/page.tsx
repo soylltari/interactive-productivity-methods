@@ -1,4 +1,4 @@
-import MethodCard from "@/components/MethodCard";
+import MethodCard from "@/components/ui/MethodCard";
 import methodsData from "@/app/data/methods.json";
 import { ProductivityMethod } from "@/app/definitions/definitions";
 

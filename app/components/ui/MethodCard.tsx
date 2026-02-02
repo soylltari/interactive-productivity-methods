@@ -1,7 +1,7 @@
 "use client";
 import { ProductivityMethod } from "@/app/definitions/definitions";
 import Image from "next/image";
-import { useFavoritesStore } from "../store/useFavoritesStore";
+import { useFavoritesStore } from "@/app/store/useFavoritesStore";
 import Link from "next/link";
 
 interface MethodCardProps {
