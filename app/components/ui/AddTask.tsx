@@ -26,7 +26,6 @@ export default function AddTask({
         placeholder={placeholder}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
-        className="bg-white border-0 shadow-sm shadow-blue-100 rounded-full focus:outline-none px-5 py-2"
         aria-label="Task input"
       />
       <button
